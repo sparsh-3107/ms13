@@ -934,7 +934,47 @@ button.wyr-btn:hover {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.05); background-color: #ffb6c1; }
 }
+#vaultGallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
 
+  .polaroid {
+    width: 40vw; /* scales with screen */
+    max-width: 200px; /* limit on large screens */
+    background: white;
+    padding: 10px 10px 30px 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+
+  .polaroid:hover {
+    transform: scale(1.05);
+  }
+
+  .polaroid img {
+    width: 100%;
+    height: auto;
+    max-height: 240px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  /* 📱 Mobile-specific tweaks */
+  @media (max-width: 600px) {
+    .polaroid {
+      width: 80vw;
+      padding: 8px 8px 24px 8px;
+    }
+
+    .polaroid img {
+      max-height: 200px;
+    }
+  }
   </style>
 </head>
 <body>
@@ -1052,19 +1092,27 @@ button.wyr-btn:hover {
   </div>
 </div>
 
-    <!-- 🔐 Vault Slide -->
-    <div class="section" id="vaultSlide">
-      <p style="font-size: 1.3rem;">🔒 Enter code to unlock secret memories:</p>
-      <input type="password" id="vaultInput" maxlength="4" placeholder="****" style="padding:0.5rem; font-size:1.2rem;" />
-     <button onclick="checkVaultCode()" class="animated-unlock">🔓 Unlock</button>
+   <!-- 🔐 Vault Slide -->
+<div class="section" id="vaultSlide">
+  <p style="font-size: 1.3rem;">🔒 Enter code to unlock secret memories:</p>
+  <input type="password" id="vaultInput" maxlength="4" placeholder="****" style="padding:0.5rem; font-size:1.2rem;" />
+  <button onclick="checkVaultCode()" class="animated-unlock">🔓 Unlock</button>
 
-      <div id="vaultError" style="color:red; display:none;">Wrong code! Try again.</div>
-      <div id="vaultGallery" style="display:none; margin-top:2rem;">
-        <p>🎞️ Secret Memories</p>
-        <img src="https://i.ibb.co/4nH19gym/file-00000000cdb45230b56b46d6a06e9834-conversation-id-67eb9922-71bc-800e-8f97-35c5aa099fe8-message-i.png" />
-        <img src="https://i.ibb.co/hRvwyFGF/Chat-GPT-Image-May-12-2025-08-18-27-PM.png" />
-      </div>
+  <div id="vaultError" style="color:red; display:none;">Wrong code! Try again.</div>
+
+  <div id="vaultGallery" style="display:none; margin-top:2rem;">
+    <p>🎞️ Secret Memories</p>
+
+    <div class="polaroid">
+      <img src="https://i.ibb.co/4nH19gym/file-00000000cdb45230b56b46d6a06e9834-conversation-id-67eb9922-71bc-800e-8f97-35c5aa099fe8-message-i.png" />
     </div>
+
+    <div class="polaroid">
+      <img src="https://i.ibb.co/hRvwyFGF/Chat-GPT-Image-May-12-2025-08-18-27-PM.png" />
+    </div>
+    
+  </div>
+</div>
 
   <!-- 💬 Love Text Response -->
 <div class="section">
